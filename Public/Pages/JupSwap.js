@@ -5,6 +5,7 @@ window.Jupiter.init({
   defaultExplorer: "Solscan",
   formProps: {
       fixedOutputMint: true,
+      fixedInputMint: true,
       swapMode: "ExactIn", // Swap mode: ExactIn or ExactOut
       initialAmount: "1000000000", // Adjust to your desired input amount
       initialInputMint: "So11111111111111111111111111111111111111112", // Replace with your input token's mint address
