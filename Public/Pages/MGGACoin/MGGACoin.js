@@ -101,24 +101,4 @@ document.addEventListener('DOMContentLoaded', function() {
             document.body.removeChild(messageElement);
         }, 3000);
     }
-
-    // Function to set up WebSocket connection for monitoring
-    const setupWebSocket = () => {
-        const ws = new WebSocket('wss://multichain-socket.birdeye.so/solana/socket');
-
-        ws.onopen = () => {
-            console.log('WebSocket connection established');
-        };
-
-        ws.onerror = (error) => {
-            console.error('WebSocket error:', error);
-        };
-
-        ws.onclose = () => {
-            console.log('WebSocket connection closed');
-        };
-    };
-
-    // Call the WebSocket setup function
-    setupWebSocket();
 });
