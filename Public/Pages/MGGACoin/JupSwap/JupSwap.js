@@ -6,6 +6,7 @@ window.Jupiter.init({
     formProps: {
       fixedInputMint: true,
       fixedOutputMint: true,
+      swapMode: "ExactInOrOut",
       initialAmount: "100000000",
       initialInputMint: "So11111111111111111111111111111111111111112",
       initialOutputMint: "FoyZoKXj8LxH29rND5AH5QcqGcH7FqeD8kjmN9zmpump",
