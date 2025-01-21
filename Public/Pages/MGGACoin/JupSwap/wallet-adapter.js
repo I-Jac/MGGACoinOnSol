@@ -1,9 +1,8 @@
-import { PhantomWalletAdapter, SolflareWalletAdapter, CoinbaseWalletAdapter } from '@solana/wallet-adapter-wallets';
-
-(async function initializeWalletAdapter() {
+// Function to initialize wallets and handle connection logic
+async function initializeWalletAdapter() {
     console.log("Initializing wallets...");
 
-    // Initialize the wallet adapters
+    // Initialize wallets
     const wallets = {
         phantom: new PhantomWalletAdapter(),
         solflare: new SolflareWalletAdapter(),
@@ -22,21 +21,21 @@ import { PhantomWalletAdapter, SolflareWalletAdapter, CoinbaseWalletAdapter } fr
     async function connectWallet(walletKey) {
         const wallet = wallets[walletKey];
 
-        // Check if wallet is available in the browser
+        // Check if wallet is available
         if (!wallet) {
             walletStatus.textContent = `Wallet adapter for ${walletKey} is not available.`;
             return;
         }
 
         try {
-            // Attempt wallet connection
+            // Attempt to connect to the wallet
             await wallet.connect();
             console.log(`Connected to wallet: ${wallet.publicKey.toBase58()}`);
 
-            // Update wallet status
+            // Update the UI with the wallet status
             walletStatus.textContent = `Connected to ${walletKey.charAt(0).toUpperCase() + walletKey.slice(1)} wallet: ${wallet.publicKey.toBase58()}`;
-
-            // Save wallet context for Jupiter integration
+            
+            // Save wallet context for integration with other systems
             window.walletContext = {
                 publicKey: wallet.publicKey,
                 signTransaction: wallet.signTransaction.bind(wallet),
@@ -47,4 +46,4 @@ import { PhantomWalletAdapter, SolflareWalletAdapter, CoinbaseWalletAdapter } fr
             walletStatus.textContent = `Failed to connect to ${walletKey} wallet.`;
         }
     }
-})();
+}
