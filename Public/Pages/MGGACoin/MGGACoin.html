@@ -6,15 +6,10 @@
     <title>MGGA Coin</title>
     <link rel="stylesheet" href="MGGACoin.css">
     <link rel="stylesheet" href="../PagesGeneral.css">
-    <link rel="stylesheet" href="JupSwap/wallet-adapter.css">
     <link rel="icon" href="../../Images/MGGALogo.png" type="image/png">
     <script defer src="MGGACoin.js"></script>
     <script defer src="JupSwap/JupSwap.js"></script>
-    <script src="JupSwap/wallet-adapter.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://unpkg.com/@solana/wallet-adapter-wallets@latest/lib/index.iife.min.js"></script>
-    <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
-    <script src="https://unpkg.com/@solana/wallet-adapter-base@latest/lib/index.iife.min.js"></script>
     <script src="https://terminal.jup.ag/main-v3.js"></script>
 </head>
     
@@ -213,25 +208,6 @@
                     <p>Connect your wallet, select SOL and MGGA, input Sol amount, and execute the swap.</p>
                 </div>
             </div>
-        </section>
-
-        <section id="wallet-selector">
-            <div class="content-wrapper">
-                <div class="headline-container">
-                    <h2>Select Wallet</h2>
-                </div>
-                <button class="wallet-button" id="connect-phantom">Connect Phantom</button>
-                <button class="wallet-button" id="connect-solflare">Connect Solflare</button>
-                <button class="wallet-button" id="connect-coinbase">Connect Coinbase</button>
-                <p id="wallet-status">No wallet connected</p>
-            </div>
-
-            <script type="module">
-                import { PhantomWalletAdapter, SolflareWalletAdapter, CoinbaseWalletAdapter } from 'https://cdn.jsdelivr.net/npm/@solana/wallet-adapter-wallets@latest/dist/umd/index.min.js';
-        
-                // Call the initialization function in wallet-adapter.js
-                initializeWalletAdapter();
-            </script>
         </section>
 
         <section id="jupiter-swap">
