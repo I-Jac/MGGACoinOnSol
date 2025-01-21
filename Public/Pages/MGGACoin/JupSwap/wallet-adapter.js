@@ -1,3 +1,5 @@
+import { PhantomWalletAdapter, SolflareWalletAdapter, CoinbaseWalletAdapter } from '@solana/wallet-adapter-wallets';
+
 (async function initializeWalletAdapter() {
     // Import wallets directly from the Solana Wallet Adapter package
     const {
