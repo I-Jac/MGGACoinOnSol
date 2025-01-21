@@ -252,19 +252,19 @@ section p {
 /* Individual button styles */
 
 .chart-buttons .pumpfuntext {
-    background-image: url('Images/Pumpfuntext.jpg'); /* Icon path */
+    background-image: url('../../Images/Pumpfuntext.jpg'); /* Icon path */
 }
 
 .chart-buttons .dexscreenertext {
-    background-image: url('Images/Dexscreener\ text\ icon.png'); /* Icon path */
+    background-image: url('../../Images/Dexscreener\ text\ icon.png'); /* Icon path */
 }
 
 .chart-buttons .dextoolstext {
-    background-image: url('Images/Dextools\ text\ icon.png'); /* Icon path */
+    background-image: url('../../Images/Dextools\ text\ icon.png'); /* Icon path */
 }
 
 .chart-buttons .birdeyetext {
-    background-image: url('Images/Birdeye\ text\ icon.png'); /* Icon path */
+    background-image: url('../../Images/Birdeye\ text\ icon.png'); /* Icon path */
     background-size: 60% auto; /* Adjust size for this button */
 }
 
