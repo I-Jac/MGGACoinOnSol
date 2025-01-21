@@ -6,27 +6,42 @@
         SolletWalletAdapter,
     } = solanaWalletAdapterWallets;
 
-    const wallets = [
-        new PhantomWalletAdapter(),
-        new SolflareWalletAdapter(),
-        new CoinbaseWalletAdapter(),
-        new SolletWalletAdapter(),
-    ];
+    // Initialize wallets
+    const wallets = {
+        phantom: new PhantomWalletAdapter(),
+        solflare: new SolflareWalletAdapter(),
+        coinbase: new CoinbaseWalletAdapter(),
+        sollet: new SolletWalletAdapter(),
+    };
 
-    // Simple wallet selection (can be replaced with a UI modal)
-    const wallet = wallets.find((w) => w.readyState === "Installed") || wallets[0];
+    const walletStatus = document.getElementById("wallet-status");
 
-    try {
-        await wallet.connect();
-        console.log("Connected to wallet:", wallet.publicKey.toBase58());
+    // Add event listeners for each wallet button
+    document.getElementById("connect-phantom").addEventListener("click", () => connectWallet("phantom"));
+    document.getElementById("connect-solflare").addEventListener("click", () => connectWallet("solflare"));
+    document.getElementById("connect-coinbase").addEventListener("click", () => connectWallet("coinbase"));
+    document.getElementById("connect-sollet").addEventListener("click", () => connectWallet("sollet"));
 
-        // Save wallet context for Jupiter integration
-        window.walletContext = {
-            publicKey: wallet.publicKey,
-            signTransaction: wallet.signTransaction.bind(wallet),
-            signAllTransactions: wallet.signAllTransactions.bind(wallet),
-        };
-    } catch (err) {
-        console.error("Failed to connect wallet:", err);
+    async function connectWallet(walletKey) {
+        const wallet = wallets[walletKey];
+
+        try {
+            // Attempt wallet connection
+            await wallet.connect();
+            console.log(`Connected to wallet: ${wallet.publicKey.toBase58()}`);
+
+            // Update wallet status
+            walletStatus.textContent = `Connected to ${walletKey.charAt(0).toUpperCase() + walletKey.slice(1)} wallet: ${wallet.publicKey.toBase58()}`;
+
+            // Save wallet context for Jupiter integration
+            window.walletContext = {
+                publicKey: wallet.publicKey,
+                signTransaction: wallet.signTransaction.bind(wallet),
+                signAllTransactions: wallet.signAllTransactions.bind(wallet),
+            };
+        } catch (err) {
+            console.error(`Failed to connect to ${walletKey} wallet:`, err);
+            walletStatus.textContent = `Failed to connect to ${walletKey} wallet.`;
+        }
     }
 })();
