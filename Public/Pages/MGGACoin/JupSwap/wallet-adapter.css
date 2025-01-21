@@ -1,1 +1,33 @@
-.
+/* wallet-adapter.css */
+
+/* Modal styles */
+.wallet-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 400px;
+    background-color: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    z-index: 1000;
+}
+
+/* Wallet button styles */
+.wallet-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f0f0f0;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.wallet-button:hover {
+    background-color: #e0e0e0;
+}
