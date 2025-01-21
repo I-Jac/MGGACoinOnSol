@@ -1,4 +1,5 @@
 (async function initializeWalletAdapter() {
+    // Import wallets directly from the Solana Wallet Adapter package
     const {
         PhantomWalletAdapter,
         SolflareWalletAdapter,
