@@ -1,6 +1,7 @@
 (async function initializeJupiter() {
-    // Wait for wallet context to load
+    // Wait for wallet connection
     while (!window.walletContext) {
+        document.getElementById("wallet-status").textContent = "Waiting for wallet connection...";
         await new Promise((resolve) => setTimeout(resolve, 100));
     }
 
@@ -12,8 +13,7 @@
             window.Jupiter.init({
                 displayMode: "integrated",
                 integratedTargetId: "integrated-terminal",
-                endpoint:
-                    "https://misty-thrilling-scion.solana-mainnet.quiknode.pro/cf8404eb59e4ff88ff2ef1904ea16e8de1de0135/",
+                endpoint: "https://misty-thrilling-scion.solana-mainnet.quiknode.pro/cf8404eb59e4ff88ff2ef1904ea16e8de1de0135/",
                 defaultExplorer: "Solscan",
                 enableWalletPassthrough: true,
                 passthroughWalletContextState: {
@@ -32,6 +32,7 @@
                     initialSlippageBps: 5,
                 },
             });
+            console.log("Jupiter Terminal initialized successfully.");
         }
     } catch (err) {
         console.error("Failed to initialize Jupiter Terminal:", err);
