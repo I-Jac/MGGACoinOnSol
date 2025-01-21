@@ -1,6 +1,11 @@
-// Wallet Adapter for Static Site
 (async function initializeWalletAdapter() {
-    const { PhantomWalletAdapter, SolflareWalletAdapter, CoinbaseWalletAdapter, SolletWalletAdapter } = solanaWalletAdapterWallets;
+    const {
+        PhantomWalletAdapter,
+        SolflareWalletAdapter,
+        CoinbaseWalletAdapter,
+        SolletWalletAdapter,
+    } = solanaWalletAdapterWallets;
+
     const wallets = [
         new PhantomWalletAdapter(),
         new SolflareWalletAdapter(),
@@ -8,13 +13,14 @@
         new SolletWalletAdapter(),
     ];
 
-    // Simulating a simple "Connect Wallet" setup for example
-    const wallet = wallets[0]; // Default: Phantom
+    // Simple wallet selection (can be replaced with a UI modal)
+    const wallet = wallets.find((w) => w.readyState === "Installed") || wallets[0];
+
     try {
         await wallet.connect();
         console.log("Connected to wallet:", wallet.publicKey.toBase58());
 
-        // Save context for Jupiter Integration
+        // Save wallet context for Jupiter integration
         window.walletContext = {
             publicKey: wallet.publicKey,
             signTransaction: wallet.signTransaction.bind(wallet),
