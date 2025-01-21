@@ -3,16 +3,17 @@
         PhantomWalletAdapter,
         SolflareWalletAdapter,
         CoinbaseWalletAdapter,
-        SolletWalletAdapter,
     } = solanaWalletAdapterWallets;
 
-    // Initialize wallets
+    console.log("Initializing wallets...");
+
     const wallets = {
         phantom: new PhantomWalletAdapter(),
         solflare: new SolflareWalletAdapter(),
         coinbase: new CoinbaseWalletAdapter(),
-        sollet: new SolletWalletAdapter(),
     };
+
+    console.log("Wallets initialized:", wallets);
 
     const walletStatus = document.getElementById("wallet-status");
 
@@ -20,10 +21,15 @@
     document.getElementById("connect-phantom").addEventListener("click", () => connectWallet("phantom"));
     document.getElementById("connect-solflare").addEventListener("click", () => connectWallet("solflare"));
     document.getElementById("connect-coinbase").addEventListener("click", () => connectWallet("coinbase"));
-    document.getElementById("connect-sollet").addEventListener("click", () => connectWallet("sollet"));
 
     async function connectWallet(walletKey) {
         const wallet = wallets[walletKey];
+
+        // Check if wallet is available in the browser
+        if (!wallet) {
+            walletStatus.textContent = `Wallet adapter for ${walletKey} is not available.`;
+            return;
+        }
 
         try {
             // Attempt wallet connection
@@ -40,7 +46,7 @@
                 signAllTransactions: wallet.signAllTransactions.bind(wallet),
             };
         } catch (err) {
-            console.error(`Failed to connect to ${walletKey} wallet:`, err);
+            console.error(`Error connecting to ${walletKey} wallet:`, err);
             walletStatus.textContent = `Failed to connect to ${walletKey} wallet.`;
         }
     }
