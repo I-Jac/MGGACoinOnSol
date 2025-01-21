@@ -5,11 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MGGA Coin</title>
     <link rel="stylesheet" href="MGGACoin.css">
-    <link rel="stylesheet" href="PagesGeneral.css">
-    <link rel="icon" href="Images/MGGALogo.png" type="image/png">
+    <link rel="stylesheet" href="../PagesGeneral.css">
+    <link rel="stylesheet" href="JupSwap/wallet-adapter.css">
+    <link rel="icon" href="../../Images/MGGALogo.png" type="image/png">
     <script defer src="MGGACoin.js"></script>
-    <script defer src="JupSwap.js"></script>
+    <script defer src="JupSwap/JupSwap.js"></script>
+    <script defer src="JupSwap/wallet-adapter.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
+    <script src="https://unpkg.com/@solana/wallet-adapter-wallets@latest/lib/index.iife.min.js"></script>
+    <script src="https://unpkg.com/@solana/wallet-adapter-base@latest/lib/index.iife.min.js"></script>
+    <script src="https://unpkg.com/@solana/wallet-adapter-react@latest/lib/index.iife.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/@solana/wallet-adapter-react-ui@latest/styles.css">
+    <script src="https://unpkg.com/@solana/wallet-adapter-react-ui@latest/lib/index.iife.min.js"></script>
     <script src="https://terminal.jup.ag/main-v3.js"></script>
 </head>
     
@@ -17,7 +25,7 @@
     <div class="body-container">
         <header>
             <div class="logo">
-                <a href="../../Public/index.html" class="logo-link">
+                <a href="../../../Public/index.html" class="logo-link">
                     <img src="Images/MGGALogo.png" alt="MGGALogo">
                     <span>MGGA</span>
                 </a>
@@ -42,7 +50,7 @@
         <section id="home" class="hero">
             <div class="hero-logo">
                 <h1>MGGA</h1>
-                <img src="Images/MGGALogo.png" alt="MGGA Large Logo">
+                <img src="../../Images/MGGALogo.png" alt="MGGA Large Logo">
             </div>
             <p class="tagline">Together, we can Make Greenland Great Again!</p>
             <p class="ca-container">
